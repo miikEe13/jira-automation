@@ -10,33 +10,38 @@ It uses Node.js, Axios, and the Jira REST API with a clean, modular structure.
 
 ## Project structure
 
-jira-automation/
-  .env                # Jira credentials and project config
-  create/
-    issue/            # Generic issue creation logic
-    sprint/           # Sprint creation orchestrator
-  data/
-    week0.js          # Sprint definition (epic, stories, subtasks)
-  utils/
-    toADF.js          # Converts plain text to Atlassian Document Format (ADF)
+| Folder / File            | Purpose                                               |
+|--------------------------|-------------------------------------------------------|
+| `create/issue/`          | Generic issue creation module (via Jira REST API)     |
+| `create/sprint/`         | Sprint builder: epic + stories + subtasks             |
+| `data/week0.js`          | Sprint definition (can create `week1`, `week2`, etc.) |
+| `utils/toADF.js`         | Converts plain text to Atlassian's ADF format         |
+| `.env`                   | Stores your Jira domain, email, token, etc.           |
 
 ## How to use
 
 1. Install dependencies
 
+```bash
     npm install
+```
 
 2. Create a .env file in the root with the following values:
+
+```bash
 
     JIRA_DOMAIN=https://your-domain.atlassian.net
     JIRA_EMAIL=your-email@example.com
     JIRA_API_TOKEN=your-api-token
     PROJECT_KEY=SCRUM
     ACCOUNT_ID=your-jira-account-id
+```
 
 3. Run the sprint creation script
 
+```bash
     node create/sprint/index.js
+```
 
 ## Creating new sprints
 
@@ -64,8 +69,9 @@ Example:
     const sprint = require("../../data/week1")
 
 4. Run again:
-
+```bash
     node create/sprint/index.js
+```
 
 ## Requirements
 
